@@ -12,6 +12,14 @@
 
 %p#description= @movie.description
 
+%h2 Reviews
+= render partial: 'reviews/review', collection: @movie.reviews
+
+%h2 Add a review:
+= form_tag movie_reviews_path(@movie) do
+  = render partial: 'reviews/review_form'
+  = submit_tag 'Save Changes'
+
 = link_to 'Edit', edit_movie_path(@movie)
 = link_to 'Add Review', new_movie_review_path(@movie)
 = link_to 'Delete', movie_path(@movie), method: :delete, data: {confirm: 'Are you sure?'}
